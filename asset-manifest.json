@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/fiuber-backoffice/static/css/main.b7e497e1.css",
+    "main.js": "/fiuber-backoffice/static/js/main.dcd7b266.js",
+    "index.html": "/fiuber-backoffice/index.html",
+    "main.b7e497e1.css.map": "/fiuber-backoffice/static/css/main.b7e497e1.css.map",
+    "main.dcd7b266.js.map": "/fiuber-backoffice/static/js/main.dcd7b266.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b7e497e1.css",
+    "static/js/main.dcd7b266.js"
+  ]
+}
