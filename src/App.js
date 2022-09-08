@@ -25,7 +25,7 @@ const App = () => {
                 <>
                 <div style={styles}>
                         <div>
-                        <button class="button is-primary is-light is-large"  onClick={getData}>Pegarle al gateway</button>
+                        <button className="button is-primary is-light is-large"  onClick={getData}>Pegarle al gateway</button>
                         {data ? 
                          <p style={{ color: '#FEFAFA' }}>Mensaje del gateway: {JSON.stringify(data)}</p>
                         : <p style={{ color: '#FEFAFA' }}>No hay mensaje del gateway todavía</p>
