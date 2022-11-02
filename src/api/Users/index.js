@@ -5,16 +5,18 @@ export function getUsers() {
   
   return [
     {
-      ID: 'F8762',
+      key: 1,
+      id: 'F8762',
       name: 'Mateo',
       last_name: 'Elmas Capo',
-      roles: 'asd',
+      roles: ['Admin', 'Passenger'],
     },
     {
-      ID: 'F8762',
+      key: 2,
+      id: 'F8762sd',
       name: 'Mateo',
       last_name: 'Elmas Capo',
-      roles: 'Algunos',
+      roles: ['Passenger', 'Driver'],
     },
   ];
 }
