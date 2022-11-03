@@ -9,14 +9,19 @@ export function getUsers() {
       id: 'F8762',
       name: 'Mateo',
       last_name: 'Elmas Capo',
-      roles: ['Admin', 'Passenger'],
+      roles: ['Driver', 'Passenger'],
     },
     {
       key: 2,
       id: 'F8762sd',
-      name: 'Mateo',
-      last_name: 'Elmas Capo',
-      roles: ['Passenger', 'Driver'],
+      name: 'Ine',
+      last_name: 'Facha',
+      roles: ['Admin', 'Driver'],
     },
   ];
+}
+
+
+export function getUserProfile(id) {
+  return {};
 }

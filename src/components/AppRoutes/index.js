@@ -4,6 +4,7 @@ import Transactions from "../../modules/Transactions";
 import Users from "../../modules/Users";
 import DetailedUser from "../../modules/DetailedUser";
 import Voyages from "../../modules/Voyages";
+import Complaints from "../../modules/Complaints";
 import { Routes, Route } from "react-router-dom";
 
 const AppRoutes = () => {
@@ -15,6 +16,7 @@ const AppRoutes = () => {
       <Route path="quotation" element={<Quotation />} />
       <Route path="transactions" element={<Transactions />} />
       <Route path="voyages" element={<Voyages />} />
+      <Route path="complaints" element={<Complaints />} />
     </Routes>
   );
 };

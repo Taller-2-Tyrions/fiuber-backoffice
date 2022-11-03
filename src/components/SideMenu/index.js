@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 const SideMenu = () => {
   const navigate = useNavigate();
   const onClick = async (menuItem) => {
-    console.log("se recibe el onclick")
     navigate(menuItem.key);
   };
 
@@ -29,6 +28,10 @@ const SideMenu = () => {
     {
       key: "administrators",
       label: "Administradores",
+    },
+    {
+      key: "complaints",
+      label: "Denuncias",
     },
   ];
 
