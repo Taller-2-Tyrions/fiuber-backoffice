@@ -23,5 +23,16 @@ export function getUsers() {
 
 
 export function getUserProfile(id) {
-  return {};
+  return {
+    "name": "unNombre", 
+    "last_name": "UnApellido",
+    "email": "unNombreUnApellido@UnMail.com",
+    "id": id,
+    "roles": ['Admin', 'Driver'],
+    "adress": "UnaDireccion",
+    "car": "UnAuto",
+    "picture":"https://www.webconsultas.com/sites/default/files/styles/wc_adaptive_image__small/public/articulos/perfil-resilencia.jpg",
+    "score": 4,
+    "isBlocked": true
+  };
 }
