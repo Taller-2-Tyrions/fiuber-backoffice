@@ -27,10 +27,16 @@ export const DetailedUserContext = createContext({});
 
 const DetailedUser = () => {
   const { id } = useParams();
-  const [profile, setProfile] = useState({});
+  const [profile, setProfile] = useState({
+    "name": "", 
+    "last_name": "",
+    "id": id,
+    "roles": [],
+    "is_blocked": false
+  });
   useEffect(() => {
-    console.log(getUserProfile(id));
     setProfile(getUserProfile(id));
+    console.log(profile)
   }, []);
   return (
     <DetailedUserContext.Provider value={{profile, setProfile}}>

@@ -17,21 +17,23 @@ const Item = styled(Paper)(({ theme }) => ({
 
 const ButtonLeftList = () => { 
   const {profile} = useContext(DetailedUserContext);
-  function addCalificationUser() {
-    if (1)
+  
+  
+  
+  function addCalificationPassenger() {
+    console.log(profile)
+    if ("Passenger" in profile.roles)
       return (
         <div>
-          {/*<Rate allowHalf defaultValue={2.5}/>*/}
-          <span><b>Usuario</b>: {profile.score}/5</span>
+          <span><b>Pasajero</b>: {profile.passenger_score}/5</span>
         </div>
       );
   }
   function addCalificationDriver() {
-    if (1)
+    if ("Driver" in profile.roles)
       return (
         <div>
-          {/*<Rate allowHalf defaultValue={2.5}/>*/}
-          <span><b>Chofer</b>: {profile.score}/5</span>
+          <span><b>Chofer</b>: {profile.driver_score}/5</span>
         </div>
       );
   }
@@ -41,7 +43,7 @@ const ButtonLeftList = () => {
     container spacing={2}
     direction="column"
     >
-      <Grid item xs={2}>{addCalificationUser()}</Grid>
+      <Grid item xs={2}>{addCalificationPassenger()}</Grid>
       <Grid item xs={2}>{addCalificationDriver()}</Grid>
       <Grid item xs={5}><BlockButton /></Grid>
       <Grid item xs={5}><AddAdminButton /></Grid>

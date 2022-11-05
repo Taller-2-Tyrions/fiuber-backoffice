@@ -7,9 +7,9 @@ const PersonalInfo = () => {
     <div>
       <p><b>Nombre y Apellido — </b>{profile.name} Y {profile.last_name}</p>
       <hr></hr>
-      <p><b>Email — </b>{profile.email}</p>
+      <p><b>id — </b>{profile.id}</p>
       <hr></hr>
-      <p><b>Dirección (IF PASSENGER) — </b>{profile.adress}</p>
+      <p><b>Dirección (IF PASSENGER) — </b>{profile.address}</p>
       <hr></hr>
       <p><b>Auto (IF DRIVER) — </b>{profile.car}</p>
     </div>  
