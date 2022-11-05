@@ -1,156 +1,213 @@
-import { useParams } from "react-router-dom";
-import { getUserProfile } from "../../api/Users"
-import { Avatar, Grid } from "antd";
-import FiuberLogo from "../../assets/fiuber-logo.jpeg"
 import "./index.css"
+import { useParams } from "react-router-dom";
+import { Button, Rate } from 'antd'
+import { useState } from 'react'
+import { getUserProfile } from "../../api/Users"
 
 
 const DetailedUser = () => {
   const { id } = useParams();
   const profile = getUserProfile(id);
+  const [buttonBlock, setButtonBlock] = useState(true);
+  
+  function addCalification() {
+    if (1)
+      return (
+        <div className="row">
+          {/*<Rate allowHalf defaultValue={2.5}/>*/}
+          <span className="text-secondary">Usuario: 4.5/5</span>
+        </div>
+      );
+  }
+  
+  function addBlockButton() {
+    return (
+      <div>
+        <Button type="primary" style={{ background: buttonBlock? "red": "green"}}
+                onClick={()=> {
+                  setButtonBlock(!buttonBlock)
+                  if (buttonBlock) {
+                    // {Bloquear Realmente} Aca hay que hacer una llamada a API. 
+                  } else {
+                    // {Desbloquear Realmente}
+                  }}}>
+          {buttonBlock? "Bloquear Usuario": "Desbloquear Usuario"}
+        </Button>
+      </div>
+    );
+  }
+  
+  function addAdminButton() {
+    return (
+      <div>
+        <Button type="primary" style={{ background: "green" }}>
+          Dar Permisos de Administrador
+        </Button>
+      </div>
+    );
+  }
+  
+  function renderBottonLeftList() {
+    return (
+      <div className="card mt-3">
+        <ul className="list-group list-group-flush">
+            <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+              {addCalification()}
+            </li>
+            <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+              {addAdminButton()}
+            </li>
+            <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+              {addBlockButton()}
+            </li>
+        </ul>
+      </div>
+    );
+  }
+
+  function renderInfo(){
+    return(
+      <div className="card mb-3">
+            <div className="card-body">
+              <div className="row">
+                <div className="col-sm-3">
+                  <h6 className="mb-0">Full Name</h6>
+                </div>
+                <div className="col-sm-9 text-secondary">
+                  Test
+                </div>
+              </div>
+              <hr />
+              <div className="row">
+                <div className="col-sm-3">
+                  <h6 className="mb-0">Email</h6>
+                </div>
+                <div className="col-sm-9 text-secondary">
+                  fip@jukmuh.al
+                </div>
+              </div>
+              <hr />
+              <div className="row">
+                <div className="col-sm-3">
+                  <h6 className="mb-0">Phone</h6>
+                </div>
+                <div className="col-sm-9 text-secondary">
+                  (239) 816-9029
+                </div>
+              </div>
+              <hr />
+              <div className="row">
+                <div className="col-sm-3">
+                  <h6 className="mb-0">Mobile</h6>
+                </div>
+                <div className="col-sm-9 text-secondary">
+                  (320) 380-4539
+                </div>
+              </div>
+              <hr />
+              <div className="row">
+                <div className="col-sm-3">
+                  <h6 className="mb-0">Address</h6>
+                </div>
+                <div className="col-sm-9 text-secondary">
+                  Bay Area, San Francisco, CA
+                </div>
+              </div>                  
+            </div>
+          </div>
+    )
+  }
+
+  function renderProfile(){
+    return(
+      <div className="card">
+            <div className="card-body">
+              <div className="d-flex flex-column align-items-center text-center">
+                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" className="rounded-circle" width={150} />
+                <div className="mt-3">
+                  <h4>Nacho</h4>
+                  <p className="text-secondary mb-1">Full Stack Developer ojala</p>
+                  <p className="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
+                </div>
+              </div>
+            </div>
+          </div>
+    )
+  }
+
+  function renderMetrics(){
+    return(
+      <div className="row gutters-sm">
+            <div className="col-sm-6 mb-3">
+              <div className="card h-100">
+                <div className="card-body">
+                  <h6 className="d-flex align-items-center mb-3"><i className="material-icons text-info mr-2">assignment</i>Project Status</h6>
+                  <small>Web Design</small>
+                  <div className="progress mb-3" style={{height: 5}}>
+                    <div className="progress-bar bg-primary" role="progressbar" style={{width: '80%'}} aria-valuenow={80} aria-valuemin={0} aria-valuemax={100} />
+                  </div>
+                  <small>Website Markup</small>
+                  <div className="progress mb-3" style={{height: 5}}>
+                    <div className="progress-bar bg-primary" role="progressbar" style={{width: '72%'}} aria-valuenow={72} aria-valuemin={0} aria-valuemax={100} />
+                  </div>
+                  <small>One Page</small>
+                  <div className="progress mb-3" style={{height: 5}}>
+                    <div className="progress-bar bg-primary" role="progressbar" style={{width: '89%'}} aria-valuenow={89} aria-valuemin={0} aria-valuemax={100} />
+                  </div>
+                  <small>Mobile Template</small>
+                  <div className="progress mb-3" style={{height: 5}}>
+                    <div className="progress-bar bg-primary" role="progressbar" style={{width: '55%'}} aria-valuenow={55} aria-valuemin={0} aria-valuemax={100} />
+                  </div>
+                  <small>Backend API</small>
+                  <div className="progress mb-3" style={{height: 5}}>
+                    <div className="progress-bar bg-primary" role="progressbar" style={{width: '66%'}} aria-valuenow={66} aria-valuemin={0} aria-valuemax={100} />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-sm-6 mb-3">
+              <div className="card h-100">
+                <div className="card-body">
+                  <h6 className="d-flex align-items-center mb-3"><i className="material-icons text-info mr-2">assignment</i>Project Status</h6>
+                  <small>Web Design</small>
+                  <div className="progress mb-3" style={{height: 5}}>
+                    <div className="progress-bar bg-primary" role="progressbar" style={{width: '80%'}} aria-valuenow={80} aria-valuemin={0} aria-valuemax={100} />
+                  </div>
+                  <small>Website Markup</small>
+                  <div className="progress mb-3" style={{height: 5}}>
+                    <div className="progress-bar bg-primary" role="progressbar" style={{width: '72%'}} aria-valuenow={72} aria-valuemin={0} aria-valuemax={100} />
+                  </div>
+                  <small>One Page</small>
+                  <div className="progress mb-3" style={{height: 5}}>
+                    <div className="progress-bar bg-primary" role="progressbar" style={{width: '89%'}} aria-valuenow={89} aria-valuemin={0} aria-valuemax={100} />
+                  </div>
+                  <small>Mobile Template</small>
+                  <div className="progress mb-3" style={{height: 5}}>
+                    <div className="progress-bar bg-primary" role="progressbar" style={{width: '55%'}} aria-valuenow={55} aria-valuemin={0} aria-valuemax={100} />
+                  </div>
+                  <small>Backend API</small>
+                  <div className="progress mb-3" style={{height: 5}}>
+                    <div className="progress-bar bg-primary" role="progressbar" style={{width: '66%'}} aria-valuenow={66} aria-valuemin={0} aria-valuemax={100} />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    )
+  }
+
   return (
-    <div className="container emp-profile">
-      <form method="post">
-        <div className="row">
-          <div className="col-md-4">
-            <div className="profile-img">
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt />
-            </div>
-          </div>
-          <div className="col-md-6">
-            <div className="profile-head">
-              <h5>
-                Kshiti Ghelani
-              </h5>
-              <h6>
-                Web Developer and Designer
-              </h6>
-              <p className="proile-rating">RANKINGS : <span>8/10</span></p>
-              <ul className="nav nav-tabs" id="myTab" role="tablist">
-                <li className="nav-item">
-                  <a className="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Timeline</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div className="col-md-2">
-            <input type="submit" className="profile-edit-btn" name="btnAddMore" defaultValue="Edit Profile" />
-          </div>
+    <div className="main-body">
+      <div className="row gutters-sm">
+        <div className="col-md-4 mb-3">
+          {renderProfile()}
+          {renderBottonLeftList()}
         </div>
-        <div className="row">
-          <div className="col-md-4">
-            <div className="profile-work">
-              <p>WORK LINK</p>
-              <a href>Website Link</a><br />
-              <a href>Bootsnipp Profile</a><br />
-              <a href>Bootply Profile</a>
-              <p>SKILLS</p>
-              <a href>Web Designer</a><br />
-              <a href>Web Developer</a><br />
-              <a href>WordPress</a><br />
-              <a href>WooCommerce</a><br />
-              <a href>PHP, .Net</a><br />
-            </div>
-          </div>
-          <div className="col-md-8">
-            <div className="tab-content profile-tab" id="myTabContent">
-              <div className="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                <div className="row">
-                  <div className="col-md-6">
-                    <label>User Id</label>
-                  </div>
-                  <div className="col-md-6">
-                    <p>Kshiti123</p>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-md-6">
-                    <label>Name</label>
-                  </div>
-                  <div className="col-md-6">
-                    <p>Kshiti Ghelani</p>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-md-6">
-                    <label>Email</label>
-                  </div>
-                  <div className="col-md-6">
-                    <p>kshitighelani@gmail.com</p>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-md-6">
-                    <label>Phone</label>
-                  </div>
-                  <div className="col-md-6">
-                    <p>123 456 7890</p>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-md-6">
-                    <label>Profession</label>
-                  </div>
-                  <div className="col-md-6">
-                    <p>Web Developer and Designer</p>
-                  </div>
-                </div>
-              </div>
-              <div className="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                <div className="row">
-                  <div className="col-md-6">
-                    <label>Experience</label>
-                  </div>
-                  <div className="col-md-6">
-                    <p>Expert</p>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-md-6">
-                    <label>Hourly Rate</label>
-                  </div>
-                  <div className="col-md-6">
-                    <p>10$/hr</p>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-md-6">
-                    <label>Total Projects</label>
-                  </div>
-                  <div className="col-md-6">
-                    <p>230</p>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-md-6">
-                    <label>English Level</label>
-                  </div>
-                  <div className="col-md-6">
-                    <p>Expert</p>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-md-6">
-                    <label>Availability</label>
-                  </div>
-                  <div className="col-md-6">
-                    <p>6 months</p>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-md-12">
-                    <label>Your Bio</label><br />
-                    <p>Your detail description</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div className="col-md-8">
+          {renderInfo()}
+          {renderMetrics()}
         </div>
-      </form>           
+      </div>
     </div>
   );
 };
