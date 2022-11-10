@@ -8,6 +8,7 @@ import ProfilePicture from './ProfilePicture'
 import PersonalInfo from './PersonalInfo'
 import ButtonLeftList from './ButtonLeftList'
 
+
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
   ...theme.typography.body2,
@@ -35,23 +36,22 @@ const DetailedUser = () => {
     "is_blocked": false
   });
   useEffect(() => {
-    setProfile(getUserProfile(id));
-    console.log(profile)
+    getUserProfile(id, setProfile);
   }, []);
   return (
     <DetailedUserContext.Provider value={{profile, setProfile}}>
       <Grid container spacing = {4}>
-        <Grid item md={2} xs={12}>
+        <Grid item md={12} xs={12}>
           <Item>
             <ProfilePicture/>
           </Item>
         </Grid>
-        <Grid item md={5} xs={12}>
+        <Grid item md={6} xs={12}>
           <ItemLeft>
             <PersonalInfo />
           </ItemLeft>
         </Grid>
-        <Grid item md={5} xs={12}>
+        <Grid item md={6} xs={12}>
           <Item>
             <ButtonLeftList/>
           </Item>

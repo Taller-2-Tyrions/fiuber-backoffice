@@ -1,4 +1,3 @@
-import Administrators from "../../modules/Administrators";
 import Quotation from "../../modules/Quotation";
 import Transactions from "../../modules/Transactions";
 import Users from "../../modules/Users";
@@ -12,7 +11,6 @@ const AppRoutes = () => {
     <Routes>
       <Route path="/" element={<Users />} />
       <Route path="users/:id" element={<DetailedUser />} />
-      <Route path="administrators" element={<Administrators />} />
       <Route path="quotation" element={<Quotation />} />
       <Route path="transactions" element={<Transactions />} />
       <Route path="voyages" element={<Voyages />} />

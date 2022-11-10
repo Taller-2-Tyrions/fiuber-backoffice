@@ -24,11 +24,7 @@ const SideMenu = () => {
     {
       key: "quotation",
       label: "Cotizacion",
-    },
-    {
-      key: "administrators",
-      label: "Administradores",
-    },
+    },,
     {
       key: "complaints",
       label: "Denuncias",
