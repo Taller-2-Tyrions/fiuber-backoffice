@@ -11,7 +11,7 @@ const AddAdminButton = () => {
       <Button type="primary" block style={{ background: "#2BF580" }}
           disabled ={profile.roles.includes("Admin")}
           onClick={()=> {
-            registerAdmin(profile.id, setProfile)
+            registerAdmin(profile.id, setProfile, profile)
         }}>
         Dar Permisos de Administrador
       </Button>

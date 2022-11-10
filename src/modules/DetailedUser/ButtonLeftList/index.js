@@ -18,11 +18,9 @@ const Item = styled(Paper)(({ theme }) => ({
 const ButtonLeftList = () => { 
   const {profile} = useContext(DetailedUserContext);
   
-  
-  
   function addCalificationPassenger() {
     console.log(profile)
-    if ("Passenger" in profile.roles)
+    if (profile.roles && profile.roles.includes("Passenger"))
       return (
         <div>
           <span><b>Pasajero</b>: {profile.passenger_score}/5</span>
@@ -30,7 +28,7 @@ const ButtonLeftList = () => {
       );
   }
   function addCalificationDriver() {
-    if ("Driver" in profile.roles)
+    if (profile.roles && profile.roles.includes("Driver"))
       return (
         <div>
           <span><b>Chofer</b>: {profile.driver_score}/5</span>

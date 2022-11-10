@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const GATEWAY_URL = "https://fiuber-gateway.herokuapp.com"
 
-const token = 'eyJhbGciOiJSUzI1NiIsImtpZCI6ImQ3YjE5MTI0MGZjZmYzMDdkYzQ3NTg1OWEyYmUzNzgzZGMxYWY4OWYiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vZml1YmVyLTM2Yjg2IiwiYXVkIjoiZml1YmVyLTM2Yjg2IiwiYXV0aF90aW1lIjoxNjY4MDQzODk5LCJ1c2VyX2lkIjoiZjdrMnF3dHc5NWhZcmF0bTZkNVZoc1VLTjY1MiIsInN1YiI6ImY3azJxd3R3OTVoWXJhdG02ZDVWaHNVS042NTIiLCJpYXQiOjE2NjgwNDM4OTksImV4cCI6MTY2ODA0NzQ5OSwiZW1haWwiOiJhZG1pbmNvbnRyYXNlbmlhc3RyaW5nQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJhZG1pbmNvbnRyYXNlbmlhc3RyaW5nQGdtYWlsLmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIn19.G-e-qfYKa6IYENOprYZnPc8RsjxEu9VfIrWaILLBsCvtcoGeeA3SixZ2Km_CQ33QB-3SChNHtukUjKbIlpl5SUaCdJ6ukpunXROWJ4J_5HE5sFuvzfMT6Jy4BsyhXC1LkVOvv7Qa1m7fDZPFeGwciPqRpr6o78EFueD0StT5nh2DoSaUqfV4_JPBvTVp6PHzPgIKDzDTqjlT-s41NWN5preOMizeL6cxk9Y8F39WeljJ_utT1juW_84rFxEGAj6K4H6vxQ2hCvO50DdxJW9eP6FCLRep2zSt3up_-3lRA9ev7XxT335KBaNBAjU80uGXjqaoBqPqlriRqdfRfSdghw'
+const token = 'eyJhbGciOiJSUzI1NiIsImtpZCI6ImQ3YjE5MTI0MGZjZmYzMDdkYzQ3NTg1OWEyYmUzNzgzZGMxYWY4OWYiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vZml1YmVyLTM2Yjg2IiwiYXVkIjoiZml1YmVyLTM2Yjg2IiwiYXV0aF90aW1lIjoxNjY4MDQ3NTUzLCJ1c2VyX2lkIjoiZjdrMnF3dHc5NWhZcmF0bTZkNVZoc1VLTjY1MiIsInN1YiI6ImY3azJxd3R3OTVoWXJhdG02ZDVWaHNVS042NTIiLCJpYXQiOjE2NjgwNDc1NTMsImV4cCI6MTY2ODA1MTE1MywiZW1haWwiOiJhZG1pbmNvbnRyYXNlbmlhc3RyaW5nQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJhZG1pbmNvbnRyYXNlbmlhc3RyaW5nQGdtYWlsLmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIn19.aPlR8sDqsy_h0jiCNxSFkrKY-w45uXBUWsIDvQtzTIStRKVilrQ5xeTOc9PDHUKuv-Fg6JA_WbYzoC5saqnSfKqXLJU0TO6BsSyeBNKodqmT0kshmuGZ3EDz9RYgGg8fGuVOvlv6HjaEGLC6WdYnYbOo9lBCeGM3xojSxemvAuIDvEdVVFos5oYIO3HzKnmFloKdg75a6m_CAVpdAxoNm0msGjV0CrPm254c4Nw2HB95FRrlrSFwtTtFy1SVQswL8xmwIJj0zSfJzWfaI23O24mMPD1zbUSVeiVCCpsAsyfW_YtPHyQvigvBGLddbJkMtyg0441ynmO9cxtoTNdP8w'
 
 export function getUsers() {
   // Aca deberiamos hacer una llamada al gateway
@@ -47,21 +47,22 @@ export function getUserProfile(id, setProfile) {
 }
 
 export function unblockUser(id, setProfile) {
-  axios.post('https://fiuber-gateway.herokuapp.com/admin/register/4ubbG910SyTA4iVCXDxdKmBwrPB2', {
+  axios.post(GATEWAY_URL + "/admin/unblock/" + id, {},  {
+    data: {},
     headers: {
       'token': token
     }
   }).then(response => {
-    setProfile(response.data)
+    getUserProfile(id, setProfile)
   });
 }
 
 export function blockUser(id, setProfile) {
-  axios.post(GATEWAY_URL + "/admin/block/" + id, {
+  axios.post(GATEWAY_URL + "/admin/block/" + id, {}, {
     headers: {
       'token': token
     }
   }).then(response => {
-    setProfile(response.data)
+    getUserProfile(id, setProfile)
   });
 }
