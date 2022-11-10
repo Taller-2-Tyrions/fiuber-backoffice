@@ -1,0 +1,15 @@
+import axios from 'axios';
+import { getUserProfile } from '../Users';
+
+const GATEWAY_URL = "https://fiuber-gateway.herokuapp.com"
+
+
+export function registerAdmin(id, setProfile) {
+  axios.post(GATEWAY_URL + "/admin/register/" + id, {}, {
+    headers: {
+      'token': 'eyJhbGciOiJSUzI1NiIsImtpZCI6ImQ3YjE5MTI0MGZjZmYzMDdkYzQ3NTg1OWEyYmUzNzgzZGMxYWY4OWYiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vZml1YmVyLTM2Yjg2IiwiYXVkIjoiZml1YmVyLTM2Yjg2IiwiYXV0aF90aW1lIjoxNjY4MDQ3NTUzLCJ1c2VyX2lkIjoiZjdrMnF3dHc5NWhZcmF0bTZkNVZoc1VLTjY1MiIsInN1YiI6ImY3azJxd3R3OTVoWXJhdG02ZDVWaHNVS042NTIiLCJpYXQiOjE2NjgwNDc1NTMsImV4cCI6MTY2ODA1MTE1MywiZW1haWwiOiJhZG1pbmNvbnRyYXNlbmlhc3RyaW5nQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJhZG1pbmNvbnRyYXNlbmlhc3RyaW5nQGdtYWlsLmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIn19.aPlR8sDqsy_h0jiCNxSFkrKY-w45uXBUWsIDvQtzTIStRKVilrQ5xeTOc9PDHUKuv-Fg6JA_WbYzoC5saqnSfKqXLJU0TO6BsSyeBNKodqmT0kshmuGZ3EDz9RYgGg8fGuVOvlv6HjaEGLC6WdYnYbOo9lBCeGM3xojSxemvAuIDvEdVVFos5oYIO3HzKnmFloKdg75a6m_CAVpdAxoNm0msGjV0CrPm254c4Nw2HB95FRrlrSFwtTtFy1SVQswL8xmwIJj0zSfJzWfaI23O24mMPD1zbUSVeiVCCpsAsyfW_YtPHyQvigvBGLddbJkMtyg0441ynmO9cxtoTNdP8w'
+    }
+  }).then(response => {
+    getUserProfile(id, setProfile)
+  });
+}
