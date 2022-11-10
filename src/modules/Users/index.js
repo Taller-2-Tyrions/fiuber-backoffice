@@ -2,6 +2,7 @@ import { Card, Table, Tag } from "antd";
 import { getUsers } from "../../api/Users"
 import { useNavigate } from "react-router-dom";
 import { renderRoles } from "./Roles"
+import { useEffect, useState } from "react";
 
 const tableColumns = [
   {
@@ -31,7 +32,10 @@ const tableColumns = [
 
 const Users = () => {
   const navigate = useNavigate();
-  const users = getUsers();
+  const [users, setUsers] = useState([]);
+  useEffect(() => {
+    getUsers(setUsers);
+  }, []);
 
   return (
     <Card title={'Usuarios'} style={{margin: 20}}>
