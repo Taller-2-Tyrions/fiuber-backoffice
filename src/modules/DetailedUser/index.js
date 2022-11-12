@@ -37,7 +37,7 @@ const DetailedUser = () => {
   });
   useEffect(() => {
     getUserProfile(id, setProfile);
-  }, []);
+  }, [id]);
   return (
     <DetailedUserContext.Provider value={{profile, setProfile}}>
       <Grid container spacing = {4}>

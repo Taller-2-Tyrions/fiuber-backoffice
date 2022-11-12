@@ -24,7 +24,7 @@ const SideMenu = () => {
     {
       key: "quotation",
       label: "Cotizacion",
-    },,
+    },
     {
       key: "complaints",
       label: "Denuncias",

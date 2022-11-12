@@ -1,23 +1,15 @@
 import { getComplaints } from "../../api/Complaints"
 import { Card, Table } from "antd";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 const Complaints = () => {
-  const navigate = useNavigate();
   const tableColumns = [
     {
       title: 'ID viaje', 
       dataIndex: 'id_voyage', 
       key: 'id_voyage',
-      render: (text) => <a>{text}</a>,
-      onCell: (record, rowIndex) => {
-        return {
-          onClick: () => {
-            console.log(record, rowIndex);
-          }
-        };
-      },
+      render: (text) => <Link to='/'>{text}</Link>,
     },
     {
       title: 'Tipo de Denuncia',
@@ -28,14 +20,7 @@ const Complaints = () => {
       title: 'ID Denunciante', 
       dataIndex: 'complainer_id', 
       key: 'complainer_id',
-      render: (text) => <a>{text}</a>,
-      onCell: (record, _) => {
-        return {
-          onClick: () => {
-            navigate(`/users/${record.complainer_id}`)
-          }
-        };
-      },
+      render: (text) => <Link to={`/users/${text}`}>{text}</Link>,
     },
     {
       title: 'Nombre Denunciante', 
@@ -46,14 +31,7 @@ const Complaints = () => {
       title: 'ID Denunciado', 
       dataIndex: 'reported_id', 
       key: 'reported_id',
-      render: (text) => <a>{text}</a>,
-      onCell: (record, _) => {
-        return {
-          onClick: () => {
-            navigate(`/users/${record.reported_id}`)
-          }
-        };
-      },
+      render: (text) => <Link to={`/users/${text}`}>{text}</Link>,
     },
     {
       title: 'Nombre Denunciado', 

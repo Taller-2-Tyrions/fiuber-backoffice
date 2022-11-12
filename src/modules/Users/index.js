@@ -1,6 +1,6 @@
-import { Card, Table, Tag } from "antd";
+import { Card, Table } from "antd";
 import { getUsers } from "../../api/Users"
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { renderRoles } from "./Roles"
 import { useEffect, useState } from "react";
 
@@ -9,7 +9,7 @@ const tableColumns = [
     title: 'ID', 
     dataIndex: 'id', 
     key: 'id',
-    render: (text) => <a>{text}</a>,
+    render: (text) => <Link to={`users/${text}`}>{text}</Link>,
   },
   {
     title: 'Nombre', 
@@ -31,7 +31,6 @@ const tableColumns = [
 
 
 const Users = () => {
-  const navigate = useNavigate();
   const [users, setUsers] = useState([]);
   useEffect(() => {
     getUsers(setUsers);
@@ -43,9 +42,6 @@ const Users = () => {
         dataSource={users}
         columns={tableColumns} 
         rowKey="id"
-        onRow={(user) => ({
-          onClick: () => navigate(`users/${user.id}`),
-        })}
       />
     </Card>
   );

@@ -1,18 +1,8 @@
 import BlockButton from "./BlockButton";
 import AddAdminButton from "./AddAdminButton";
-import Paper from '@mui/material/Paper';
-import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
 import { DetailedUserContext } from '../index.js'
 import { useContext } from 'react'
-
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-}));
 
 
 const ButtonLeftList = () => { 
