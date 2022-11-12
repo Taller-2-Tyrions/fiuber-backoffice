@@ -1,6 +1,6 @@
-import { createContext, useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { getUserProfile } from "../../api/Users"
+// import { createContext, useState, useEffect } from "react";
+// import { useParams } from "react-router-dom";
+// import { getUserProfile } from "../../api/Users"
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
@@ -12,33 +12,33 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-const ItemLeft = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  color: theme.palette.text.secondary,
-}));
+// const ItemLeft = styled(Paper)(({ theme }) => ({
+//   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+//   ...theme.typography.body2,
+//   padding: theme.spacing(1),
+//   color: theme.palette.text.secondary,
+// }));
 
-function renderSubmitButtons(){
-    return (
-        <div>
-            <Grid item md={6} xs={12}>
-                <Item>
-                    <div>
-                        <input type="submit" defaultValue="Submit" />
-                    </div>
-                </Item>
-            </Grid>
-                <Grid item md={6} xs={12}>
-                <Item>
-                    <div>
-                        <input type="reset" />
-                    </div>
-                </Item>
-            </Grid>
-        </div>
-    )
-}
+// function renderSubmitButtons(){
+//     return (
+//         <div>
+//             <Grid item md={6} xs={12}>
+//                 <Item>
+//                     <div>
+//                         <input type="submit" defaultValue="Submit" />
+//                     </div>
+//                 </Item>
+//             </Grid>
+//                 <Grid item md={6} xs={12}>
+//                 <Item>
+//                     <div>
+//                         <input type="reset" />
+//                     </div>
+//                 </Item>
+//             </Grid>
+//         </div>
+//     )
+// }
 
 const Quotation = () => {
   return (
