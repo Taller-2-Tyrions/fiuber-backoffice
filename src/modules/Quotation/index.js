@@ -30,14 +30,13 @@ function renderDataButton(text, name, clarification){
 
 
 
-function quotationForm(form, constants, accessToken){
+function quotationForm(form, accessToken){
     const onFinish = (values) => {
         sendConstants(values, accessToken)
     };
     return (
         <div>
             <Form form={form} layout="vertical" autoComplete="off"
-            initialValues={constants}
             onFinish={onFinish}>
                 <Grid container spacing = {1} alignItems="center" justifyContent="center">
                     <Grid item md={12} xs={12}>
@@ -115,34 +114,16 @@ function quotationForm(form, constants, accessToken){
 }
 
 const Quotation = () => {
-    const [constants, setConstants] = useState({
-        "price_minute": 2.0,
-        "price_meter": 1.0,
-        "price_vip": 1.0,
-        "plus_night": 1.0,
-        "seniority_driver": 1.0,
-        "daily_driver": 1.0,
-        "monthly_driver": 1.0,
-        "seniority_passenger": 1.0,
-        "daily_passenger": 1.0,
-        "monthly_passenger": 1.0,
-        "max_discount_passenger": 1.0,
-        "max_increase_driver": 1.0
-      });
     const { accessToken } = useAuth();
 
-      
-    getConstants(setConstants, accessToken);
     const [form] = Form.useForm();
-    // useEffect(() => {
-        
-    //     console.log("Sali de pedir constants");
-    //     // form.setFieldsValue(constants)
-    // }, []);
+    useEffect(() => {
+        getConstants(form, accessToken);
+    }, []);
 
   return (
     <div>
-        {quotationForm(form, constants, accessToken)}
+        {quotationForm(form, accessToken)}
     </div>
   );
 }

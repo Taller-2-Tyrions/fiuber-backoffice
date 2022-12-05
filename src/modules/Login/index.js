@@ -51,6 +51,7 @@ const Login = () => {
         <Input.Password />
       </Form.Item>
 
+      <b>admincontraseniastring@gmail.com</b>
       <Form.Item
         wrapperCol={{
           offset: 8,
