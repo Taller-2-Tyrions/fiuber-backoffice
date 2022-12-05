@@ -2,6 +2,7 @@ import { getComplaints } from "../../api/Complaints"
 import { Card, Table } from "antd";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import useAuth from "../../useAuth";
 
 
 const Complaints = () => {
@@ -40,10 +41,13 @@ const Complaints = () => {
       key: 'reported_name',
     },
   ];
-    const [complaints, setComplaints] = useState([]);
-    useEffect(() => {
-        getComplaints(setComplaints);
-    }, []);
+
+  const {accessToken} = useAuth();
+
+  const [complaints, setComplaints] = useState([]);
+  useEffect(() => {
+      getComplaints(setComplaints, accessToken);
+  }, []);
 
   return (
     <Card title={'Denuncias'} style={{margin: 20}}>

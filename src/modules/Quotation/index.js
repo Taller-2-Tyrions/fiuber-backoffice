@@ -1,7 +1,6 @@
 import React from 'react';
 import { Form, Button, InputNumber} from 'antd';
-
-
+import useAuth from '../../useAuth';
 import { useState, useEffect } from "react";
 import { getConstants, sendConstants } from "../../api/Quotation"
 import { styled } from '@mui/material/styles';
@@ -29,28 +28,16 @@ function renderDataButton(text, name, clarification){
   )
 }
 
-const onFinish = (values) => {
-    sendConstants(values, "test_token")
-};
 
-function quotationForm(form, constants){
+
+function quotationForm(form, constants, accessToken){
+    const onFinish = (values) => {
+        sendConstants(values, accessToken)
+    };
     return (
         <div>
             <Form form={form} layout="vertical" autoComplete="off"
-            initialValues={{
-                "price_minute": constants.price_minute,
-                "price_meter": constants.price_meter,
-                "price_vip": constants.price_vip,
-                "plus_night": constants.plus_night,
-                "seniority_driver": constants.seniority_driver,
-                "daily_driver": constants.daily_driver,
-                "monthly_driver": constants.monthly_driver,
-                "seniority_passenger": constants.seniority_passenger,
-                "daily_passenger": constants.daily_passenger,
-                "monthly_passenger": constants.monthly_passenger,
-                "max_discount_passenger": constants.max_discount_passenger,
-                "max_increase_driver": constants.max_increase_driver
-            }}
+            initialValues={constants}
             onFinish={onFinish}>
                 <Grid container spacing = {1} alignItems="center" justifyContent="center">
                     <Grid item md={12} xs={12}>
@@ -129,7 +116,7 @@ function quotationForm(form, constants){
 
 const Quotation = () => {
     const [constants, setConstants] = useState({
-        "price_minute": 1.0,
+        "price_minute": 2.0,
         "price_meter": 1.0,
         "price_vip": 1.0,
         "plus_night": 1.0,
@@ -142,15 +129,20 @@ const Quotation = () => {
         "max_discount_passenger": 1.0,
         "max_increase_driver": 1.0
       });
+    const { accessToken } = useAuth();
 
-    useEffect(() => {
-        getConstants(setConstants);
-    }, []);
-
+      
+    getConstants(setConstants, accessToken);
     const [form] = Form.useForm();
+    // useEffect(() => {
+        
+    //     console.log("Sali de pedir constants");
+    //     // form.setFieldsValue(constants)
+    // }, []);
+
   return (
     <div>
-        {quotationForm(form, constants)}
+        {quotationForm(form, constants, accessToken)}
     </div>
   );
 }

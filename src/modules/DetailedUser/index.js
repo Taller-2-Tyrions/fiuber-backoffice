@@ -7,7 +7,7 @@ import Grid from '@mui/material/Grid';
 import ProfilePicture from './ProfilePicture'
 import PersonalInfo from './PersonalInfo'
 import ButtonLeftList from './ButtonLeftList'
-
+import useAuth from "../../useAuth";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -35,8 +35,9 @@ const DetailedUser = () => {
     "roles": [],
     "is_blocked": false
   });
+  const { accessToken } = useAuth();
   useEffect(() => {
-    getUserProfile(id, setProfile);
+    getUserProfile(id, setProfile, accessToken);
   }, [id]);
   return (
     <DetailedUserContext.Provider value={{profile, setProfile}}>

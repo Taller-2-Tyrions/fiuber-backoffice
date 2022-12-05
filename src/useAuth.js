@@ -5,7 +5,7 @@ import React, {
   createContext,
   useContext,
 } from "react";
-import axios from "axios";
+import { apilogin } from "./api/Login";
 
 const AuthContext = createContext({});
 
@@ -13,7 +13,7 @@ export function AuthProvider({ children }) {
   const [accessToken, setAccessToken] = useState(null);
 
   const login = async (mail, pwd) => {
-    setAccessToken("hola como estas");
+    apilogin(mail, pwd, setAccessToken);
   }
 
   useEffect(() => {

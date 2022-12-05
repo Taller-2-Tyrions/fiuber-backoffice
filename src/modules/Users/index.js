@@ -3,13 +3,14 @@ import { getUsers } from "../../api/Users"
 import { Link } from "react-router-dom";
 import { renderRoles } from "./Roles"
 import { useEffect, useState } from "react";
+import useAuth from "../../useAuth";
 
 const tableColumns = [
   {
     title: 'ID', 
     dataIndex: 'id', 
     key: 'id',
-    render: (text) => <Link to={`users/${text}`}>{text}</Link>,
+    render: (text) => <Link to={`/users/${text}`}>{text}</Link>,
   },
   {
     title: 'Nombre', 
@@ -32,8 +33,9 @@ const tableColumns = [
 
 const Users = () => {
   const [users, setUsers] = useState([]);
+  const { accessToken } = useAuth();
   useEffect(() => {
-    getUsers(setUsers);
+    getUsers(setUsers, accessToken);
   }, []);
 
   return (
