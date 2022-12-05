@@ -1,5 +1,4 @@
 import axios from 'axios';
-import useAuth from '../../useAuth';
 
 const GATEWAY_URL = process.env.REACT_APP_GATEWAY_URL
 
@@ -16,6 +15,7 @@ export function getUsers(setUsers, accessToken) {
 
 
 export function getUserProfile(id, setProfile, accessToken) {
+  console.log("Pidiendo User "+accessToken);
   axios.get(GATEWAY_URL + "/users/" + id, {
     headers: {
       'token': accessToken
@@ -32,7 +32,7 @@ export function unblockUser(id, setProfile, accessToken) {
       'token': accessToken
     }
   }).then(response => {
-    getUserProfile(id, setProfile)
+    getUserProfile(id, setProfile, accessToken)
   });
 }
 
@@ -42,6 +42,6 @@ export function blockUser(id, setProfile, accessToken) {
       'token': accessToken
     }
   }).then(response => {
-    getUserProfile(id, setProfile)
+    getUserProfile(id, setProfile, accessToken)
   });
 }

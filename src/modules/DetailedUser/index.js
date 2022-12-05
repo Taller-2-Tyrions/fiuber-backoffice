@@ -35,6 +35,7 @@ const DetailedUser = () => {
     "roles": [],
     "is_blocked": false
   });
+  
   const { accessToken } = useAuth();
   useEffect(() => {
     getUserProfile(id, setProfile, accessToken);
@@ -54,7 +55,7 @@ const DetailedUser = () => {
         </Grid>
         <Grid item md={6} xs={12}>
           <Item>
-            <ButtonLeftList/>
+            <ButtonLeftList />
           </Item>
         </Grid>
         <Grid item md={12} xs={12}>

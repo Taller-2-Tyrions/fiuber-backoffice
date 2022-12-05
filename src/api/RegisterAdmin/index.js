@@ -10,6 +10,6 @@ export function registerAdmin(id, setProfile, accessToken) {
       'token': accessToken
     }
   }).then(response => {
-    getUserProfile(id, setProfile)
+    getUserProfile(id, setProfile, accessToken)
   });
 }

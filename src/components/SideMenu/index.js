@@ -10,12 +10,8 @@ const SideMenu = () => {
 
   const menuItems = [
     {
-      key: "transactions",
-      label: "Transacciones",
-    },
-    {
-      key: "voyages",
-      label: "Viajes",
+      key: "metrics",
+      label: "Metricas",
     },
     {
       key: "users",
