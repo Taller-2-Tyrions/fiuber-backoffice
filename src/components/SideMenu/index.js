@@ -18,7 +18,7 @@ const SideMenu = () => {
       label: "Viajes",
     },
     {
-      key: "/",
+      key: "users",
       label: "Usuarios",
     },
     {
