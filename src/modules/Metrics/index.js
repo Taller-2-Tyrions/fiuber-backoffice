@@ -1,63 +1,75 @@
-import { Chart } from 'primereact/chart';
-import { useState } from 'react';
+import { useState, createContext } from 'react';
+import { styled } from '@mui/material/styles';
+import Paper from '@mui/material/Paper';
+import Grid from '@mui/material/Grid';
+import Interactions from './Interactions'
+import LoginMetrics from './LoginMetrics'
+
+
+const Item = styled(Paper)(({ theme }) => ({
+  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+  ...theme.typography.body2,
+  textAlign: 'center',
+  padding: theme.spacing(1),
+  color: theme.palette.text.secondary,
+}));
+
+export const MetricsContext = createContext({});
 
 
 const Metrics = () => {
-  let horizontalOptions = {
-    indexAxis: 'y',
-    maintainAspectRatio: false,
-    aspectRatio: .8,
-    plugins: {
-        legend: {
-            labels: {
-                color: '#495057'
-            }
-        }
-    },
-    scales: {
-        x: {
-            ticks: {
-                color: '#495057'
-            },
-            grid: {
-                color: '#ebedef'
-            }
-        },
-        y: {
-            ticks: {
-                color: '#495057'
-            },
-            grid: {
-                color: '#ebedef'
-            }
-        }
-    }
-  };
-
-  const [basicData] = useState({
-    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-    datasets: [
-        {
-            label: 'My First dataset',
-            backgroundColor: '#42A5F5',
-            data: [65, 59, 80, 81, 56, 55, 40]
-        },
-        {
-            label: 'My Second dataset',
-            backgroundColor: '#FFA726',
-            data: [28, 48, 40, 19, 86, 27, 90]
-        }
-    ]
+  const [metrics, setMetrics] = useState({
+    "login_federado": 65,
+    "login_password": 40,
+    "signup_federado": 25,
+    "signup_password": 16,
+    "blocks": 25,
+    "resets": 45
   });
 
+  return (
+    <MetricsContext.Provider value={{metrics, setMetrics}}>
+    <div>
+      <Grid container spacing = {1} alignItems="center" justifyContent="center">
+        <Grid item md={12}>
+          <Item>
+            <h3><b>Accesos</b></h3>
+          </Item>
+        </Grid>
 
+        <Grid item md={12}>
+          <Item>
+            <Interactions/>
+          </Item>
+        </Grid>
+        
+        <Grid item md={6} xs={12}>
+          <Item>
+            <h3><b>Logins</b></h3>
+          </Item>
+        </Grid>
+        
+        <Grid item md={6} xs={12}>
+          <Item>
+            <h3><b>Signup</b></h3>
+          </Item>
+        </Grid>
 
-    return (
-      <div className="card">
-        <h5>Horizontal</h5>
-        <Chart type="bar" data={basicData} options={horizontalOptions} />
-      </div>
-    );
-  };
+        <Grid item md={6} xs={12}>
+          <Item>
+            <LoginMetrics/>
+          </Item>
+        </Grid>
+        
+        <Grid item md={6} xs={12}>
+          <Item>
+            <LoginMetrics/>
+          </Item>
+        </Grid> 
+      </Grid>
+    </div>
+    </MetricsContext.Provider>
+  );
+};
   
-  export default Metrics;
+export default Metrics;

@@ -58,11 +58,6 @@ const DetailedUser = () => {
             <ButtonLeftList />
           </Item>
         </Grid>
-        <Grid item md={12} xs={12}>
-          <Item>
-            Imaginarse Las Metricas
-          </Item>
-        </Grid>
       </Grid>
     </DetailedUserContext.Provider>
   );
