@@ -46,22 +46,22 @@ const Interactions = () => {
       {
         label: 'Login',
         backgroundColor: '#42A5F5',
-        data: [metrics.login_federado + metrics.login_password]
+        data: [metrics.login_federate_evt + metrics.login_pass_evt]
       },
       {
         label: 'Signup',
         backgroundColor: '#5CF7E9',
-        data: [metrics.login_federado + metrics.login_password]
+        data: [metrics.login_federate_evt + metrics.login_pass_evt]
       },
       {
-        label: 'Blocks',
+        label: 'block_evt',
         backgroundColor: '#6FF75C',
-        data: [metrics.blocks]
+        data: [metrics.block_evt]
       },
       {
-        label: 'Resets',
+        label: 'reset_evt',
         backgroundColor: '#F7DD5C',
-        data: [metrics.resets]
+        data: [metrics.reset_evt]
       }
     ]
   });

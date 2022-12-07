@@ -3,21 +3,21 @@ import { useContext, useState } from "react";
 import { Chart } from 'primereact/chart';
 
 
-const LoginMetrics = () => {
+const Payments = () => {
   const {metrics} = useContext(MetricsContext);
 
   const [chartData] = useState({
-    labels: ['Login Federado', 'Login No Federado'],
+    labels: ['Pagos Fallidos', 'Pagos Exitosos'],
     datasets: [
       {
-        data: [metrics.login_federate_evt, metrics.login_pass_evt],
+        data: [metrics.payments_fail, metrics.payments_success],
         backgroundColor: [
-          "#F7FB7A",
-          "#D87AFB"
+          "#FB7A7A",
+          "#84FB7A"
         ],
         hoverBackgroundColor: [
-          "#F7FB7A",
-          "#D87AFB"
+          "#FB7A7A",
+          "#84FB7A"
         ]
       }]
   });
@@ -34,9 +34,9 @@ const LoginMetrics = () => {
   
   return (
     <div className="card flex justify-content-center">
-      <Chart type="doughnut" data={chartData} options={lightOptions} style={{ position: 'relative', width: '30%' }}/>
+      <Chart type="doughnut" data={chartData} options={lightOptions} style={{ position: 'relative', width: '50%' }}/>
     </div>
   );
 }
 
-export default LoginMetrics;
+export default Payments;
