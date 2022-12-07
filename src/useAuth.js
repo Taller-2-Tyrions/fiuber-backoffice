@@ -13,8 +13,8 @@ export function AuthProvider({ children }) {
   const [accessToken, setAccessToken] = useState(null);
 
   const login = async (mail, pwd) => {
-    setAccessToken("Token");
-    //apilogin(mail, pwd, setAccessToken);
+    // setAccessToken("Token");
+    apilogin(mail, pwd, setAccessToken);
   }
 
   useEffect(() => {

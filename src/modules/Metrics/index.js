@@ -8,7 +8,7 @@ import SignUp from './SignUp'
 import Payments from './Payments'
 import Voyages from './Voyages'
 import useAuth from "../../useAuth";
-import { getMetrics } from "../../api/Metrics"
+import { getAccessMetrics, getVoyagesMetrics, getPaymentsMetrics } from "../../api/Metrics"
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -104,29 +104,38 @@ function displayVoyages(metrics){
 }
 
 const Metrics = () => {
-  const [metrics, setMetrics] = useState({
-    "signup_federate_evt": 35,
-    "signup_pass_evt": 35,
-    "login_federate_evt": 7,
-    "login_pass_evt": 44,
-    "block_evt": 49,
-    "reset_evt": 14,
-    "payments_success": 2,
-    "payments_fail": 3,
-    "average_price":100,
-    "voyages": 10,
-    "average_duration": 9,
-    "vip_voyages": 2,
-    "no_vip_voyages": 8
+  const [accessMetrics, setAccessMetrics] = useState({
+    "signup_federate_evt": 0,
+    "signup_pass_evt": 0,
+    "login_federate_evt": 0,
+    "login_pass_evt": 0,
+    "block_evt": 0,
+    "reset_evt": 0
+  });
+
+  
+  const [paymentsMetrics, setPaymentsMetrics] = useState({
+    "payments_success": 0,
+    "payments_fail": 0,
+    "average_price": 0
+  });
+
+  const [voyagesMetrics, setVoyagesMetrics] = useState({
+    "voyages": 0,
+    "average_duration": 0,
+    "vip_voyages": 0,
+    "no_vip_voyages": 0
   });
 
   const { accessToken } = useAuth();
   useEffect(() => {
-    getMetrics(setMetrics, accessToken);
-  }, [id]);
+    getAccessMetrics(setAccessMetrics, accessToken);
+    getVoyagesMetrics(setVoyagesMetrics, accessToken);
+    getPaymentsMetrics(setPaymentsMetrics, accessToken);
+  }, []);
 
   return (
-    <MetricsContext.Provider value={{metrics, setMetrics}}>
+    <MetricsContext.Provider value={{accessMetrics, paymentsMetrics, voyagesMetrics}}>
     <div>
       <Grid container spacing = {1} alignItems="center" justifyContent="center">
         <Grid item md={12}>
@@ -155,13 +164,13 @@ const Metrics = () => {
 
         <Grid item lg={6} md={12} xs={12}>
           <Item>
-            {displayPayments(metrics)}
+            {displayPayments(paymentsMetrics)}
           </Item>
         </Grid>
 
         <Grid item lg={6} md={12} xs={12}>
           <Item>
-            {displayVoyages(metrics)}
+            {displayVoyages(voyagesMetrics)}
           </Item>
         </Grid>
           

@@ -4,13 +4,13 @@ import { Chart } from 'primereact/chart';
 
 
 const Voyages = () => {
-  const {metrics} = useContext(MetricsContext);
+  const {voyagesMetrics} = useContext(MetricsContext);
 
-  const [chartData] = useState({
+  const chartData = {
     labels: ['Viajes VIP', 'Viajes NO VIP'],
     datasets: [
       {
-        data: [metrics.vip_voyages, metrics.no_vip_voyages],
+        data: [voyagesMetrics.vip_voyages, voyagesMetrics.no_vip_voyages],
         backgroundColor: [
           "#CEFB7A",
           "#FB7AE0"
@@ -20,7 +20,7 @@ const Voyages = () => {
           "#FB7AE0"
         ]
       }]
-  });
+  };
 
   const [lightOptions] = useState({
       plugins: {
