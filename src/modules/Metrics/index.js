@@ -1,4 +1,4 @@
-import { useState, createContext } from 'react';
+import { useState, createContext, useEffect } from 'react';
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
@@ -7,6 +7,8 @@ import LoginMetrics from './LoginMetrics'
 import SignUp from './SignUp'
 import Payments from './Payments'
 import Voyages from './Voyages'
+import useAuth from "../../useAuth";
+import { getMetrics } from "../../api/Metrics"
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -61,12 +63,12 @@ function displayPayments(metrics){
             <h3><b>Pagos</b></h3>
           </Item>
       </Grid>
-      <Grid item xs={6}>
+      <Grid item xs={12} lg={6}>
         <Item>
           <Payments/>
         </Item>
       </Grid>
-      <Grid item xs={6}>
+      <Grid item xs={12} lg={6}>
         <Item>
             <h3>Precio Promedio:</h3>
             <h3><b>{metrics.average_price}</b></h3>
@@ -84,12 +86,12 @@ function displayVoyages(metrics){
             <h3><b>Viajes</b></h3>
           </Item>
       </Grid>
-      <Grid item xs={6}>
+      <Grid item xs={12} lg={6}>
         <Item>
           <Voyages/>
         </Item>
       </Grid>
-      <Grid item xs={6}>
+      <Grid item xs={12} lg={6}>
         <Item>
             <h3>Tiempo Promedio:</h3>
             <h3><b>{metrics.average_duration}</b></h3>
@@ -117,6 +119,11 @@ const Metrics = () => {
     "vip_voyages": 2,
     "no_vip_voyages": 8
   });
+
+  const { accessToken } = useAuth();
+  useEffect(() => {
+    getMetrics(setMetrics, accessToken);
+  }, [id]);
 
   return (
     <MetricsContext.Provider value={{metrics, setMetrics}}>
