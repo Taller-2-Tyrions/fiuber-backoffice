@@ -10,7 +10,7 @@ const ButtonLeftList = () => {
   
   function addCalificationPassenger() {
     console.log(profile)
-    if (profile.roles && profile.roles.includes("Passenger"))
+    if (profile.roles && profile.roles.includes("Passenger") && profile.passenger_score)
       return (
         <div>
           <span><b>Pasajero</b>: {profile.passenger_score}/5</span>
@@ -18,7 +18,7 @@ const ButtonLeftList = () => {
       );
   }
   function addCalificationDriver() {
-    if (profile.roles && profile.roles.includes("Driver"))
+    if (profile.roles && profile.roles.includes("Driver") && profile.driver_score)
       return (
         <div>
           <span><b>Chofer</b>: {profile.driver_score}/5</span>
