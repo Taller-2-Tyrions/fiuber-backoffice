@@ -10,19 +10,33 @@ env:
   APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
   
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-20.04
+
+#    strategy:
+#      matrix:
+#        node-version: [10.x, 12.x, 14.x, 15.x]
+
     steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: 16
-    - name: Install dependencies
-      run: yarn
-    - run: npm  ci
-    
-    - name: Build, Push and Release a Docker container to Heroku. # Your custom step name
+      # Check-out your repository.
+      - name: Checkout
+        uses: actions/checkout@v3 # ó checkout@v2
+      - name: Create .env file
+        run: |
+          touch .env
+          echo HEROKU_API_KEY=${{secrets.HEROKU_API_KEY}} >> .env
+          echo APP_NAME=${{secrets.HEROKU_APP_NAME}} >> .env
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Install dependencies
+        run: yarn
+      - run: npm  ci
+
+### ⬇ IMPORTANT PART ⬇ ###
+
+      - name: Build, Push and Release a Docker container to Heroku. # Your custom step name
         uses: gonuit/heroku-docker-deploy@v1.3.3 # GitHub action name (leave it as it is).
         with:
           # Below you must provide variables for your Heroku app.
@@ -58,3 +72,7 @@ jobs:
           # For more information look at https://devcenter.heroku.com/articles/process-model
           
           process_type: web
+          
+   
+          
+### ⬆ IMPORTANT PART ⬆ ###
