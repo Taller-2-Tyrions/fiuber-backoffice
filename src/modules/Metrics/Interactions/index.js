@@ -4,8 +4,7 @@ import { Chart } from 'primereact/chart';
 
 
 const Interactions = () => {
-  const {metrics} = useContext(MetricsContext);
-  console.log(metrics);
+  const {accessMetrics} = useContext(MetricsContext);
   let horizontalOptions = {
     indexAxis: 'y',
     maintainAspectRatio: false,
@@ -39,32 +38,32 @@ const Interactions = () => {
 
   
 
-  const [basicData] = useState({
+  const basicData = {
     labels: ['Accesos a la aplicación'],
 
     datasets: [
       {
         label: 'Login',
         backgroundColor: '#42A5F5',
-        data: [metrics.login_federate_evt + metrics.login_pass_evt]
+        data: [accessMetrics.login_federate_evt + accessMetrics.login_pass_evt]
       },
       {
         label: 'Signup',
         backgroundColor: '#5CF7E9',
-        data: [metrics.login_federate_evt + metrics.login_pass_evt]
+        data: [accessMetrics.login_federate_evt + accessMetrics.login_pass_evt]
       },
       {
         label: 'block_evt',
         backgroundColor: '#6FF75C',
-        data: [metrics.block_evt]
+        data: [accessMetrics.block_evt]
       },
       {
         label: 'reset_evt',
         backgroundColor: '#F7DD5C',
-        data: [metrics.reset_evt]
+        data: [accessMetrics.reset_evt]
       }
     ]
-  });
+  }
   return (
     <div className="card">
       <Chart type="bar" data={basicData} options={horizontalOptions} />

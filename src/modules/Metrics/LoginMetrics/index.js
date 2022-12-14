@@ -4,13 +4,13 @@ import { Chart } from 'primereact/chart';
 
 
 const LoginMetrics = () => {
-  const {metrics} = useContext(MetricsContext);
+  const {accessMetrics} = useContext(MetricsContext);
 
-  const [chartData] = useState({
+  const chartData = {
     labels: ['Login Federado', 'Login No Federado'],
     datasets: [
       {
-        data: [metrics.login_federate_evt, metrics.login_pass_evt],
+        data: [accessMetrics.login_federate_evt, accessMetrics.login_pass_evt],
         backgroundColor: [
           "#F7FB7A",
           "#D87AFB"
@@ -20,7 +20,7 @@ const LoginMetrics = () => {
           "#D87AFB"
         ]
       }]
-  });
+  }
 
   const [lightOptions] = useState({
       plugins: {
