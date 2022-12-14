@@ -105,26 +105,26 @@ function displayVoyages(metrics){
 
 const Metrics = () => {
   const [accessMetrics, setAccessMetrics] = useState({
-    "signup_federate_evt": 0,
-    "signup_pass_evt": 0,
-    "login_federate_evt": 0,
-    "login_pass_evt": 0,
-    "block_evt": 0,
-    "reset_evt": 0
+    "signup_federate_evt": 1,
+    "signup_pass_evt": 1,
+    "login_federate_evt": 2,
+    "login_pass_evt": 1,
+    "block_evt": 5,
+    "reset_evt": 4
   });
 
   
   const [paymentsMetrics, setPaymentsMetrics] = useState({
-    "payments_success": 0,
-    "payments_fail": 0,
-    "average_price": 0
+    "payments_success": 4,
+    "payments_fail": 2,
+    "average_price": 1
   });
 
   const [voyagesMetrics, setVoyagesMetrics] = useState({
-    "voyages": 0,
-    "average_duration": 0,
-    "vip_voyages": 0,
-    "no_vip_voyages": 0
+    "voyages": 3,
+    "average_duration": 5,
+    "vip_voyages": 6,
+    "no_vip_voyages": 8
   });
 
   const { accessToken } = useAuth();
