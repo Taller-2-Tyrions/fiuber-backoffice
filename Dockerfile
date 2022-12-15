@@ -17,5 +17,4 @@ RUN npm install
 # copio todo lo que esta en el directorio actual dentro del contenedor actual (menos lo del dockerignore)
 COPY . .
 
-
-CMD [ "npx", "serve", "build" ]
+CMD [ "npm", "run", "dev"]
