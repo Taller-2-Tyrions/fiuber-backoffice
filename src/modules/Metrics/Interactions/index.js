@@ -50,15 +50,15 @@ const Interactions = () => {
       {
         label: 'Signup',
         backgroundColor: '#5CF7E9',
-        data: [accessMetrics.login_federate_evt + accessMetrics.login_pass_evt]
+        data: [accessMetrics.signup_federate_evt + accessMetrics.signup_pass_evt]
       },
       {
-        label: 'block_evt',
+        label: 'Block',
         backgroundColor: '#6FF75C',
         data: [accessMetrics.block_evt]
       },
       {
-        label: 'reset_evt',
+        label: 'Reset',
         backgroundColor: '#F7DD5C',
         data: [accessMetrics.reset_evt]
       }
