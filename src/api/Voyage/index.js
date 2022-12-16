@@ -1,1 +1,0 @@
-// Aca hacemos la llamada al gateway pidiendo datos de voyages

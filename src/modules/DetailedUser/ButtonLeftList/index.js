@@ -1,18 +1,8 @@
 import BlockButton from "./BlockButton";
 import AddAdminButton from "./AddAdminButton";
-import Paper from '@mui/material/Paper';
-import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
 import { DetailedUserContext } from '../index.js'
 import { useContext } from 'react'
-
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-}));
 
 
 const ButtonLeftList = () => { 
@@ -20,7 +10,7 @@ const ButtonLeftList = () => {
   
   function addCalificationPassenger() {
     console.log(profile)
-    if (profile.roles && profile.roles.includes("Passenger"))
+    if (profile.roles && profile.roles.includes("Passenger") && profile.passenger_score)
       return (
         <div>
           <span><b>Pasajero</b>: {profile.passenger_score}/5</span>
@@ -28,7 +18,7 @@ const ButtonLeftList = () => {
       );
   }
   function addCalificationDriver() {
-    if (profile.roles && profile.roles.includes("Driver"))
+    if (profile.roles && profile.roles.includes("Driver") && profile.driver_score)
       return (
         <div>
           <span><b>Chofer</b>: {profile.driver_score}/5</span>

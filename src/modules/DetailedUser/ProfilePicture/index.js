@@ -8,11 +8,11 @@ const ProfilePicture = () => {
   const addPicture = () => {
     if (profile.picture) {
       return (
-        <img src= {profile.picture} style={{"borderRadius": "50%"}} width={150} />
+        <img src= {profile.picture} style={{"borderRadius": "50%"}} width={150} alt='Foto de Perfil'/>
       );
     }
     return (
-      <img src= {ProfileDefault} style={{"borderRadius": "50%"}} width={150} />
+      <img src= {ProfileDefault} style={{"borderRadius": "50%"}} width={150} alt='Foto de Perfil'/>
     );
   } 
   return(

@@ -1,13 +1,12 @@
 import axios from 'axios';
 
-const GATEWAY_URL = "https://fiuber-gateway.herokuapp.com"
+const GATEWAY_URL = process.env.REACT_APP_GATEWAY_URL
 
-const token = 'eyJhbGciOiJSUzI1NiIsImtpZCI6ImQ3YjE5MTI0MGZjZmYzMDdkYzQ3NTg1OWEyYmUzNzgzZGMxYWY4OWYiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vZml1YmVyLTM2Yjg2IiwiYXVkIjoiZml1YmVyLTM2Yjg2IiwiYXV0aF90aW1lIjoxNjY4MDUxNzU3LCJ1c2VyX2lkIjoiZjdrMnF3dHc5NWhZcmF0bTZkNVZoc1VLTjY1MiIsInN1YiI6ImY3azJxd3R3OTVoWXJhdG02ZDVWaHNVS042NTIiLCJpYXQiOjE2NjgwNTE3NTcsImV4cCI6MTY2ODA1NTM1NywiZW1haWwiOiJhZG1pbmNvbnRyYXNlbmlhc3RyaW5nQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJhZG1pbmNvbnRyYXNlbmlhc3RyaW5nQGdtYWlsLmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIn19.MNrZxWUTok3sBdfbc7Lj1zdn2kaljiKUIANJp9BOTvVNzeeqdnQvNLK5Je6Q7UFhtP53fuaAoTPahhHhGrke6Y1cuKpFboigNxHpNCWJwkAyFUupxhj_jQwXOs9p278rtvjb0RXv6gDJBSHxN2xRb84QfvgkllQ19tZ9xn4PIKiO33DzQIQwIkpttBWGIyA-PA3dL8WOtQGHRa4555Tszjtidz9iV5uD-4PbpSsmn1LUg59SHm082Ugy26iCCCjZ57I5-sO3AmgQbzTu-jZjWk-pUnoSzBGwL3Cvwm7_FYjV2LM6C6rdop6rWtrW1_1WvFiY7aoHB2bY1cKlgG1_WQ'
 
-export function getUsers(setUsers) {
+export function getUsers(setUsers, accessToken) {
   axios.get(GATEWAY_URL + "/admin/users", {
     headers: {
-      'token': token
+      'token': accessToken
     }
   }).then(response => {
     setUsers(response.data)
@@ -15,33 +14,34 @@ export function getUsers(setUsers) {
 }
 
 
-export function getUserProfile(id, setProfile) {
+export function getUserProfile(id, setProfile, accessToken) {
+  console.log("Pidiendo User "+accessToken);
   axios.get(GATEWAY_URL + "/users/" + id, {
     headers: {
-      'token': token
+      'token': accessToken
     }
   }).then(response => {
     setProfile(response.data)
   });
 }
 
-export function unblockUser(id, setProfile) {
+export function unblockUser(id, setProfile, accessToken) {
   axios.post(GATEWAY_URL + "/admin/unblock/" + id, {},  {
     data: {},
     headers: {
-      'token': token
+      'token': accessToken
     }
   }).then(response => {
-    getUserProfile(id, setProfile)
+    getUserProfile(id, setProfile, accessToken)
   });
 }
 
-export function blockUser(id, setProfile) {
+export function blockUser(id, setProfile, accessToken) {
   axios.post(GATEWAY_URL + "/admin/block/" + id, {}, {
     headers: {
-      'token': token
+      'token': accessToken
     }
   }).then(response => {
-    getUserProfile(id, setProfile)
+    getUserProfile(id, setProfile, accessToken)
   });
 }
